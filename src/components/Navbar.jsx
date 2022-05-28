@@ -49,6 +49,8 @@ function Navbar(props) {
                 <Link to='/learn'>Learn</Link>
                 <Link to='/repeat'>Repeat</Link>
 
+                <Link to='/profile'>Profile</Link> {/*В будущем Link должен быть доступен только авторизованным пользователям*/}
+
             </Stack>
 
             <Box
