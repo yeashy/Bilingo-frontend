@@ -56,11 +56,20 @@ function Navbar(props) {
                 mt={{ base: 4, md: 0 }}
             >
                 <Button
+                    mr='15px'
                     onClick={() => {navigate('/signIn')}}
                     variant="outline"
                     _hover={{ bg: "#7DB5D3" }}
                 >
                     Sign in
+                </Button>
+
+                <Button
+                    onClick={() => {navigate('/signUp')}}
+                    variant="outline"
+                    _hover={{ bg: "#7DB5D3" }}
+                >
+                    Sign Up
                 </Button>
             </Box>
         </Flex>
