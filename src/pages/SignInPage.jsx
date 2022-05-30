@@ -6,7 +6,7 @@ function SignInPage() {
         <Container mt='30px'>
              <Text fontSize='5xl'>Sign in</Text>
             <FormControl>
-                <FormLabel htmlFor='login'>Login</FormLabel>
+                <FormLabel htmlFor='login'>Email or Nickname</FormLabel>
                 <Input id='login' type='login'/>
 
                 <FormLabel mt='15px' htmlFor='password'>Password</FormLabel>
