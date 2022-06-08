@@ -3,10 +3,10 @@ import Navbar from './components/Navbar';
 import './css/App.css';
 import SignInPage from './pages/SignInPage';
 import HomePage from './pages/HomePage';
-import LearnPage from './pages/LearnPage';
 import RepeatPage from './pages/RepeatPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import LearnPageContainer from './pages/LearnPage';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route exact path='/' element={<HomePage/>}/>
-          <Route path='/learn' element={<LearnPage/>}/>
+          <Route path='/learn' element={<LearnPageContainer/>}/>
           <Route path='/repeat' element={<RepeatPage/>}/>
           <Route path='/signIn' element={<SignInPage/>}/>
           <Route path='/signUp' element={<SignUpPage/>}/>
