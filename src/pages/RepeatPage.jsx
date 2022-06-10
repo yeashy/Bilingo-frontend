@@ -7,7 +7,7 @@ import TaskBox from "../components/TaskBox";
 import {GetKnownWordThunkCreator} from '../reducers/reducer';
 
 function RepeatPage(props) {
-    console.log(props)
+
     return (
         <Container align='center' mt='30px' p='15px' bgColor='#EBF8FF' borderRadius='16px' maxW='1000px'>
             <Text fontSize='2xl' as='b'>Time to repeat the word:</Text>

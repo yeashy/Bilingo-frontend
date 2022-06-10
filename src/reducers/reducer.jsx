@@ -24,9 +24,9 @@ const initialState = {
             level: "A2"
         }
     },
-    repeatPage : {
-        knownWord : "Hello",
-        task : {}
+    repeatPage: {
+        knownWord: "Hello",
+        task: {}
     }
 }
 
@@ -45,6 +45,7 @@ function GetProfileDetailsActionCreator(profile) {
     return { type: GET_PROFILE_DETAILS, profile: profile }
 }
 
+
 export function GetNewWordThunkCreator() {
 
 }
@@ -53,10 +54,35 @@ export function GetProfileDetailsThunkCreator() {
     return (dispatch) => {
         bilingoApi.getUserInfo()
             .then((data) => {
-                dispatch(GetProfileDetailsActionCreator(data))
-            })
-    }
+                dispatch(GetProfileDetailsActionCreator(data))})
+        }
 }
 
-export function GetKnownWordThunkCreator(){
+export function LoginThunkCreator(login, password) {
+    return (dispatch) => {
+        bilingoApi.login(login, password)
+            .then((token) => {
+                localStorage.setItem('token', token)
+                dispatch(GetProfileDetailsThunkCreator())})
+        }
+}
+
+export function LogoutThunkCreator() {
+    return (dispatch) => {
+        bilingoApi.logout()
+            .then((res) => {
+                console.log(res)
+                localStorage.setItem('token', '')
+                dispatch(GetProfileDetailsThunkCreator())})
+        }
+}
+
+export function RegisterThunkCreator(data) {
+    return (dispatch) => {
+        bilingoApi.register(data)
+            .then((res) => {
+                dispatch(LoginThunkCreator(data.email, data.password))})
+        }
+}
+export function GetKnownWordThunkCreator() {
 }

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import NavbarContainer from './components/Navbar';
 import './css/App.css';
 import SignInPage from './pages/SignInPage';
 import HomePage from './pages/HomePage';
@@ -11,7 +11,7 @@ import RepeatPageContainer from './pages/RepeatPage';
 function App() {
   return (
     <div className="App">
-        <Navbar/>
+        <NavbarContainer/>
         <Routes>
           <Route exact path='/' element={<HomePage/>}/>
           <Route path='/learn' element={<LearnPageContainer/>}/>
