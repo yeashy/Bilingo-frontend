@@ -21,6 +21,10 @@ const initialState = {
             partOfSpeech : "Noun",
             level : "A2"
         }
+    },
+    repeatPage : {
+        knownWord : "Hello",
+        task : {}
     }
 };
 
@@ -38,4 +42,7 @@ export function GetProfileDetailsThunkCreator(){
 }
 
 export function GetNewWordThunkCreator(){
+}
+
+export function GetKnownWordThunkCreator(){
 }
