@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Image, Spacer, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Image, Text } from "@chakra-ui/react";
 
 function ProfilePage() {
     return (
@@ -14,21 +14,42 @@ function ProfilePage() {
                     />
                 </Box>
 
-                <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px'>
-                    <Box textAlign='left'>
-                        <Text><b>Name:</b></Text>
-                        <Text><b>Surname:</b></Text>
-                        <Text><b>Email:</b></Text>
-                        <Text><b>Age:</b></Text>
-                    </Box>
+                <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='space-between' p='15px'>
+                    <Flex alignItems="start" height="full" direction="column" justifyContent="space-between">
+                        <Box textAlign="left">
+                            <Text><b>Nickname</b></Text>
+                            <Text>nickname</Text>
+                        </Box>
+                        <Box textAlign="left">
+                            <Text><b>Fullname</b></Text>
+                            <Text>John Doe</Text>
+                        </Box>
+                        <Box textAlign="left">
+                            <Text><b>Email</b></Text>
+                            <Text>example@email.com</Text>
+                        </Box>
+                    </Flex>
 
-                    <Spacer/>
-                    
-                    <Button alignSelf='end' color='white' bg='#5DAAD3' _hover={{ bg: "#7DB5D3" }}>Edit</Button>
+                    <Flex alignItems="start" height="full" direction="column" justifyContent="space-between">
+                    <Box textAlign="left">
+                            <Text><b>Age</b></Text>
+                            <Text>21</Text>
+                        </Box>
+                        <Box textAlign="left">
+                            <Text><b>Gender</b></Text>
+                            <Text>Male</Text>
+                        </Box>
+                        <Box textAlign="left">
+                            <Text><b>Level</b></Text>
+                            <Text>B1</Text>
+                        </Box>
+                    </Flex>
+
+                    <Flex>
+                        <Button alignSelf='end' color='white' bg='#00B5D8' _hover={{ bg: "#7DB5D3" }} mr="10px">Edit data</Button>
+                        <Button alignSelf='end' color='white' bg='#C53030' _hover={{ bg: "#FF5353" }}>Remove Account</Button>
+                    </Flex>
                 </Flex>
-
-               
-                
             </Flex>
 
             <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px' mt='15px'>
