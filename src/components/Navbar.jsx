@@ -21,14 +21,15 @@ function Navbar(props) {
             align="center"
             justify="space-between"
             wrap="wrap"
-            padding={6}
-            bg="#5DAAD3"
+            padding={3}
+            bg="#00B5D8"
             color="white"
+            height="60px"
             {...props}
         >
             <Flex align="center" mr={5}>
                 <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-                    Billingo
+                    Bilingo
                 </Heading>
             </Flex>
 
@@ -39,18 +40,13 @@ function Navbar(props) {
             <Stack
                 direction={{ base: "column", md: "row" }}
                 display={{ base: isOpen ? "block" : "none", md: "flex" }}
-                width={{ base: "full", md: "auto" }}
                 alignItems="center"
                 flexGrow={1}
                 mt={{ base: 4, md: 0 }}
             >
-
-                <Link to='/'>Home</Link>
-                <Link to='/learn'>Learn</Link>
-                <Link to='/repeat'>Repeat</Link>
-
-                <Link to='/profile'>Profile</Link> {/*В будущем Link должен быть доступен только авторизованным пользователям*/}
-
+                <Link to='/' className="header_link">Main</Link> {/*В будущем Link должен быть доступен только авторизованным пользователям*/}
+                <Link to='/learn' className="header_link">Learn!</Link>
+                <Link to='/repeat' className="header_link">Repeat!</Link>
             </Stack>
 
             <Box
