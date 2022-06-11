@@ -40,3 +40,17 @@
     transform: rotate(360deg);
   }
 }
+
+.push{
+  margin-bottom: 20px;
+}
+
+footer{
+  background-color: #00B5D8;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 12px;
+}
