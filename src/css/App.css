@@ -54,3 +54,10 @@ footer{
   padding: 10px;
   font-size: 12px;
 }
+
+hr{
+  border-bottom: 1px solid black;
+  width: 250px;
+  align-self: center;
+  margin-top: 20px!important;
+}

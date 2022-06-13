@@ -11,10 +11,10 @@ function ExpampleTabs() {
 
 
             <TabPanels>
-                <TabPanel>
+                <TabPanel padding="0 100px">
                     <Flex flexDirection='column'>
                         <Text fontSize='2xl'>Yesterday I arrived in London by airplane.</Text>
-
+                        <hr />
                         <Text fontSize='2xl' mt='15px'>Вчера я прилетел в Лондон на самолете.</Text>
                     </Flex>
                 </TabPanel>
