@@ -2,9 +2,7 @@ import { Flex,Text,Input,Button } from "@chakra-ui/react";
 import { useState } from "react";
 
 
-let words = ['London', 'Yesterday', 'In']
-
-function TaskBox(){
+function TaskBox(props){
     const [inputValue, setInputValue] = useState('')
 
     function handleClick(event){
@@ -25,8 +23,8 @@ function TaskBox(){
 
         <Flex mt='15px' gap='15px' justifyContent='center'>
 
-            {words.map(word => {
-                return <Button isActive={false} key={word} onClick={handleClick} value={word}>{word}</Button>
+            {props.exercise.sentenceRandomOrder.map((word, index) => {
+                return <Button isActive={false} key={word + index} onClick={handleClick} value={word}>{word}</Button>
             })}
             
         </Flex>

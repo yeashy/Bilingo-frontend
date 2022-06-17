@@ -41,9 +41,26 @@ function register(data) {
             return result
         })
 }
+
+function getNewWord(){
+    return instance.get('getNewWord')
+        .then((result) => {
+            return result.data
+        })
+}
+
+function getRandomExercise(id){
+    return instance.get(`getRandomExercise/${id}`)
+        .then((result) => {
+            return result.data
+        })
+}
+
 export const bilingoApi = {
     getUserInfo: getUserInfo,
     login: login,
     logout : logout,
-    register : register
+    register : register,
+    getNewWord : getNewWord,
+    getRandomExercise : getRandomExercise
 }

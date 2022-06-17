@@ -17,7 +17,6 @@ function Navbar(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const handleToggle = () => (isOpen ? onClose() : onOpen());
     const navigate = useNavigate();
-    console.log(props)
     const dispatch = useDispatch()
 
     function handleLogout(){

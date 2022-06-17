@@ -4,7 +4,7 @@ import ChooseRightComponent from "../components/ChooseRightComponent";
 
 import ListenAndTypeComponent from "../components/ListenAndTypeComponent";
 import TaskBox from "../components/TaskBox";
-import {GetKnownWordThunkCreator} from '../reducers/reducer';
+import {GetKnownWordThunkCreator, GetRandomExerciseThunkCreator} from '../reducers/reducer';
 
 function RepeatPage(props) {
 
