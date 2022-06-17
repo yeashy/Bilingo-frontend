@@ -8,12 +8,20 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
+import { LoginThunkCreator, LogoutThunkCreator } from '../reducers/reducer';
+import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Navbar(props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const handleToggle = () => (isOpen ? onClose() : onOpen());
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    function handleLogout(){
+        dispatch(LogoutThunkCreator())
+    }
 
     return (
         <Flex
@@ -24,8 +32,6 @@ function Navbar(props) {
             padding={3}
             bg="#00B5D8"
             color="white"
-            height="60px"
-            {...props}
         >
             <Flex align="center" mr={5}>
                 <Heading as="h1" size="lg" letterSpacing={"tighter"}>
@@ -44,34 +50,59 @@ function Navbar(props) {
                 flexGrow={1}
                 mt={{ base: 4, md: 0 }}
             >
-                <Link to='/' className="header_link">Main</Link> {/*В будущем Link должен быть доступен только авторизованным пользователям*/}
-                <Link to='/learn' className="header_link">Learn!</Link>
-                <Link to='/repeat' className="header_link">Repeat!</Link>
+
+                <Link to='/'>Home</Link>
+
+                {localStorage.getItem('token') ? <>
+                    <Link to='/learn'>Learn</Link>
+                    <Link to='/repeat'>Repeat</Link>
+
+                    <Link to='/profile'>Profile</Link></> : <></>}
+
+
             </Stack>
+
+
 
             <Box
                 display={{ base: isOpen ? "block" : "none", md: "block" }}
                 mt={{ base: 4, md: 0 }}
             >
-                <Button
-                    mr='15px'
-                    onClick={() => {navigate('/signIn')}}
-                    variant="outline"
-                    _hover={{ bg: "#7DB5D3" }}
-                >
-                    Sign in
-                </Button>
 
+                {localStorage.getItem('token') ? <>
                 <Button
-                    onClick={() => {navigate('/signUp')}}
-                    variant="outline"
-                    _hover={{ bg: "#7DB5D3" }}
-                >
-                    Sign Up
-                </Button>
-            </Box>
+                        mr='15px'
+                        onClick={() => {handleLogout()}}
+                        variant="outline"
+                        _hover={{ bg: "#7DB5D3" }}
+                    >
+                        Logout
+                    </Button>
+                    </> : <><Button
+                        mr='15px'
+                        onClick={() => { navigate('/signIn') }}
+                        variant="outline"
+                        _hover={{ bg: "#7DB5D3" }}
+                    >
+                        Sign in
+                    </Button>
+
+                    <Button
+                        onClick={() => { navigate('/signUp') }}
+                        variant="outline"
+                        _hover={{ bg: "#7DB5D3" }}
+                    >
+                        Sign Up
+                    </Button></>}
+
+                </Box>
         </Flex>
     );
 };
 
-export default Navbar;
+function mapStateToProps(state) {
+    return { profile: state.bilingoPage.profile }
+}
+
+const NavbarContainer = connect(mapStateToProps, { LoginThunkCreator, LogoutThunkCreator })(Navbar);
+export default NavbarContainer;
