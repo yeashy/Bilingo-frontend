@@ -1,29 +1,30 @@
 import { Flex, Tab, TabList, TabPanels, Tabs, TabPanel, Text } from "@chakra-ui/react";
+import parse from "html-react-parser";
+function ExpampleTabs(props) {
 
-function ExpampleTabs() {
     return (
         <Tabs align='center'>
             <TabList >
-                <Tab>1</Tab>
-                <Tab>2</Tab>
-                <Tab>3</Tab>
+                {props.examples.slice(0, 3).map((val, index) => {
+                    return (
+                        <Tab key={index}>{index + 1}</Tab>
+                    )
+                })}
             </TabList>
 
 
             <TabPanels>
-                <TabPanel>
-                    <Flex flexDirection='column'>
-                        <Text fontSize='2xl'>Yesterday I arrived in London by airplane.</Text>
+                {props.examples.slice(0, 3).map((val, index) => {
+                    return (
+                        <TabPanel key={val.value}>
+                            <Flex flexDirection='column'>
+                                <Text fontSize='2xl'>{parse(val.value)}</Text>
 
-                        <Text fontSize='2xl' mt='15px'>Вчера я прилетел в Лондон на самолете.</Text>
-                    </Flex>
-                </TabPanel>
-                <TabPanel>
-                    2
-                </TabPanel>
-                <TabPanel>
-                    3
-                </TabPanel>
+                                <Text fontSize='2xl' mt='15px'>{parse(val.translation)}</Text>
+                            </Flex>
+                        </TabPanel>
+                    )
+                })}
             </TabPanels>
         </Tabs>
     )

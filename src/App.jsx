@@ -1,24 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import NavbarContainer from './components/Navbar';
 import './css/App.css';
 import SignInPage from './pages/SignInPage';
-import HomePage from './pages/HomePage';
 import LearnPage from './pages/LearnPage';
 import RepeatPage from './pages/RepeatPage';
+import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePageContainer from './pages/ProfilePage';
+import LearnPageContainer from './pages/LearnPage';
+import RepeatPageContainer from './pages/RepeatPage';
 
 function App() {
   return (
     <div className="App">
-        <Navbar/>
+        <NavbarContainer/>
         <Routes>
           <Route exact path='/' element={<HomePage/>}/>
-          <Route path='/learn' element={<LearnPage/>}/>
-          <Route path='/repeat' element={<RepeatPage/>}/>
+          <Route path='/learn' element={<LearnPageContainer/>}/>
+          <Route path='/repeat' element={<RepeatPageContainer/>}/>
           <Route path='/signIn' element={<SignInPage/>}/>
           <Route path='/signUp' element={<SignUpPage/>}/>
-          <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/profile' element={<ProfilePageContainer/>}/>
         </Routes>
     </div>
   );

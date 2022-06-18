@@ -1,41 +1,61 @@
 import { Box, Button, Container, Flex, Image, Spacer, Text } from "@chakra-ui/react";
+import { connect, useDispatch } from "react-redux";
+import { GetProfileDetailsThunkCreator } from '../reducers/reducer';
+import { useEffect } from "react";
 
-function ProfilePage() {
-    return (
-        <Container mt='30px' maxW='1000px'>
-            <Flex>
-                <Box mr='20px'>
-                    <Image
-                        src='https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                        width='200px'
-                        height='200px'
-                        borderRadius='20px'
-                        alt='Profile Image'
-                    />
-                </Box>
+function ProfilePage(props) {
+    const profile = props.profile;
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(GetProfileDetailsThunkCreator());
+    }, [])
 
-                <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px'>
-                    <Box textAlign='left'>
-                        <Text><b>Name:</b></Text>
-                        <Text><b>Surname:</b></Text>
-                        <Text><b>Email:</b></Text>
-                        <Text><b>Age:</b></Text>
+    if (localStorage.getItem('token')) {
+
+        return (
+            <Container mt='30px' maxW='1000px'>
+                <Flex>
+                    <Box mr='20px'>
+                        <Image
+                            src={profile.avatarURL}
+                            width='200px'
+                            height='200px'
+                            borderRadius='20px'
+                            alt='Profile Image'
+                        />
                     </Box>
 
-                    <Spacer/>
-                    
-                    <Button alignSelf='end' color='white' bg='#5DAAD3' _hover={{ bg: "#7DB5D3" }}>Edit</Button>
+                    <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px'>
+                        <Box textAlign='left'>
+                            <Text><b>First Name:</b> {profile.firstName}</Text>
+                            <Text><b>LastName:</b> {profile.lastName}</Text>
+                            <Text><b>Email:</b> {profile.email}</Text>
+                            <Text><b>Gender:</b> {profile.gender}</Text>
+                        </Box>
+
+                        <Spacer />
+
+                        <Button alignSelf='end' color='white' bg='#5DAAD3' _hover={{ bg: "#7DB5D3" }}>Edit</Button>
+                    </Flex>
+
+
+
                 </Flex>
 
-               
-                
-            </Flex>
-
-            <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px' mt='15px'>
-                Stats
-            </Flex>
-        </Container>
-    )
+                <Flex bg='#DEEEFF' flex='1' borderRadius='20px' justifyContent='start' p='15px' mt='15px'>
+                    Stats
+                </Flex>
+            </Container>
+        )
+    }
+    else {
+        return (<div>Please, Sign In</div>)
+    }
 }
 
-export default ProfilePage;
+function mapStateToProps(state) {
+    return { profile: state.bilingoPage.profile }
+}
+
+const ProfilePageContainer = connect(mapStateToProps, { GetProfileDetailsThunkCreator })(ProfilePage);
+export default ProfilePageContainer;
